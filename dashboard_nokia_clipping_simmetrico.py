@@ -20,7 +20,7 @@ M = 16          # 16-QAM per la simulazione del clipping
 # ==========================================
 # 1. SIDEBAR: CONTROLLI INTERATTIVI
 # ==========================================
-st.sidebar.header("Netork Parameters")
+st.sidebar.header("Network Parameters")
 
 d_m = st.sidebar.slider("Link Distance (m)", 100, 1000, 500, step=50)
 iso_dB = st.sidebar.slider("Antenna Isolation (dB)", 40, 80, 55, step=1)
