@@ -68,7 +68,7 @@ sym_tx_norm = (I_ideal + 1j*Q_ideal)
 
 # Funzione per calcolare la varianza di distorsione normalizzata in base all'IBO
 def calc_dist_var(ibo):
-    A_sat = 10 ** (-ibo / 20) 
+    A_sat = 10 ** (ibo / 20) 
     amp = np.abs(sym_tx_norm)
     clip_mask = amp > A_sat
     sym_clip = np.copy(sym_tx_norm)
@@ -143,13 +143,13 @@ for ibo_val in ibo_vec:
 st.header("2. Industrial Metric: EVM vs. Input Back-Off")
 st.markdown("The **Error Vector Magnitude (EVM)** quantifies the total system degradation. Driving the Power Amplifier with a low IBO pushes it near saturation: non-linear distortion spikes, causing a rapid deterioration of the EVM. A high EVM means the receiver cannot reliably map the QAM symbols.")
 
-col_evm1, col_evm2 = st.columns(2)
-with col_evm1:
-    st.markdown("**Statistical Definition:**")
-    st.latex(r"EVM_{RMS}(\%) = \sqrt{\frac{\frac{1}{N} \sum_{k=1}^{N} |S_{rx,k} - S_{ideal,k}|^2}{P_{avg}}} \times 100")
-with col_evm2:
-    st.markdown("**System Approximation:**")
-    st.latex(r"EVM \approx \frac{1}{\sqrt{SNDR}}")
+
+
+st.markdown("**Statistical Definition:**")
+st.latex(r"EVM_{RMS}(\%) = \sqrt{\frac{\frac{1}{N} \sum_{k=1}^{N} |S_{rx,k} - S_{ideal,k}|^2}{P_{avg}}} \times 100")
+
+st.markdown("**System Approximation:**")
+st.latex(r"EVM \approx \frac{1}{\sqrt{SNDR}}")
 
 fig2 = go.Figure()
 fig2.add_trace(go.Scatter(
